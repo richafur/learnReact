@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="react-container"></div>
+
+    <div id="mountNode"></div>
+
+    <div id="newNode"></div>
+
+    <div id="evenNewerNode"></div>
+
+    <script type="text/babel">
+
+   		/* JSX REACT */
+   		ReactDOM.render(
+   			<h1>Hello, world on {new Date().toDateString()}!</h1>,
+	        document.getElementById('react-container')
+		);
+
+		/* JSX REACT */
+		class Hello extends React.Component{
+    		render(){
+    			return(
+    				<div className="container"><h2>Getting Started</h2></div>
+   				);
+   			}
+   		}
+   		ReactDOM.render(<Hello />, mountNode);
+
+		/* JS ONLY  REACT */
+		class Richard extends React.Component{
+    		render(){
+    			return(
+    				React.createElement("div", {className: "container"}, React.createElement("h3", null, "Something completely new."))
+   				);
+   			}
+   		}
+   		ReactDOM.render(<Richard />, newNode);
+
+
+   		class Button extends React.Component{
+   			
+   			
+   			handleClick = () => {
+   			//	this.setState({
+   			//		counter: ++this.state.counter
+   			//	});
+
+   			//	this.setState((prevState) => ({		
+   			//		counter: prevState.counter + 1
+   			//	}));
+   			}
+   			
+   			render(){
+   				return(
+   					<button onClick={this.handleClick}>+1</button>
+   				);
+   			}
+   		}
+
+   		const Result = (props) =>{
+   			return(
+   				<div>...</div>
+   			);
+   		}
+   		
+
+   		class App extends React.Component{
+   			state = { counter: 0 };
+
+   			incremetnCounter = () => {
+   				this.setState((prevState) => ({		
+   					counter: prevState.counter + 1
+   				}));
+   			}
+
+   			render(){
+   				return(
+   					<div>
+   						<Button />
+   						<Result />
+   					</div>
+   				);
+   			}
+   		}
+   		
+   		ReactDOM.render(<App  />, evenNewerNode);
+
+
+    </script>
+    <!--
+      Note: this page is a great way to try React but it's not suitable for production.
+      It slowly compiles JSX with Babel in the browser and uses a large development build of React.
+
+      To set up a production-ready React build environment, follow these instructions:
+      * https://reactjs.org/docs/add-react-to-a-new-app.html
+      * https://reactjs.org/docs/add-react-to-an-existing-app.html
+
+      You can also use React without JSX, in which case you can remove Babel:
+      * https://reactjs.org/docs/react-without-jsx.html
+      * https://reactjs.org/docs/cdn-links.html
+    -->
+  </body>
+</html>
